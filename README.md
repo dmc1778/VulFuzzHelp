@@ -15,11 +15,11 @@ sudo gedit /home/USERNAME/.local/bin/pip
 ```
 And change the first commented line which is indicating to the python installation. 
 
-# Compilation
+# Compilations
 
 ## Build Pytorch from source
 
-One major limitation of pytorch installtion using typical package managers such as pip and conda is that you don't have access to different components of pytorch. For example, one may want to run pytorch tests which is not possible in regular way. So, it is highly recommend to build from source.
+One significant limitation of installing Pytorch using standard package managers such as pip and conda is that you do not have access to all of Pytorch's components. For example, one may want to run pytorch tests, which is not normally possible. As a result, building from source is strongly advised. 
 
 In order to build from source, you need to follow the following instructions:
 
