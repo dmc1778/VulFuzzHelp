@@ -8,7 +8,7 @@ You may encounter this error
 ```
 pip3: bad interpreter: No such file or directory
 ```
-Which means your pip is indicating to a python installation which does not exist. What you have to do is open pip bash script using
+That is, your pip is pointing to a Python installation that does not exist. You must first launch the pip bash script:
 
 ```
 sudo gedit /home/USERNAME/.local/bin/pip
