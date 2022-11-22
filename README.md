@@ -39,6 +39,28 @@ def write_fn(func_name, params, input_signature, output_signature):
 	
 ```
 
+# Database
+## Mongodb
+### change data dir
+In order to change mongodb data directory, please follow:
+First, run:
+```
+sudo nano /etc/mongodb.conf
+```
+Then, change:
+
+```
+# Where and how to store data.
+storage:
+  dbPath: /home/nimashiri/mongodb
+#  engine:
+#  wiredTiger:
+```
+You need to give mongodb permission to the new path:
+
+```
+sudo chown mongodb:mongodb /new/path
+```
 
 # Compilations
 
