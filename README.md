@@ -15,6 +15,31 @@ sudo gedit /home/USERNAME/.local/bin/pip
 ```
 And change the first commented line which is indicating to the python installation. 
 
+# FSE23
+## Get statistics
+We need to count the overlapp among covered APIs by each sources. As a result, everytime we run API calls for each source, we have to
+change the __init__.py file in DL library root patch. For example, for pytorch:
+
+```
+import pymongo
+
+"""
+You should configure the database
+"""
+torch_db = pymongo.MongoClient(host="localhost", port=27017)["Torch"]
+
+def write_fn(func_name, params, input_signature, output_signature):
+    params = dict(params)
+    out_fname = "torch." + func_name
+    params['input_signature'] = input_signature
+    params['output_signature'] = output_signature
+    params['source'] = 'docs'
+    torch_db[out_fname].insert_one(params)
+   
+	
+```
+
+
 # Compilations
 
 ## Build Pytorch from source
@@ -31,6 +56,7 @@ Then you have to change directory to pytorch repository:
 ```
 Cd pytorch_dir
 ```
+
 
 ### Create build files
 
