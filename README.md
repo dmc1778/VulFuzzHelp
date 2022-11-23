@@ -41,7 +41,7 @@ def write_fn(func_name, params, input_signature, output_signature):
 
 # Database
 ## Mongodb
-### change data dir
+### change data dir to home (normal installation)
 In order to change mongodb data directory, please follow:
 First, run:
 ```
@@ -61,6 +61,10 @@ You need to give mongodb permission to the new path:
 ```
 sudo chown mongodb:mongodb /new/path
 ```
+
+### Use binaries
+
+I tried several ways to change data directory of mongodb using normal installation, but since I am using a mounted drive with insufficient priviligaes, still I can't write to new data directory. Hence, I had to use pre compiled binaries since I can define data and log directories from scratch with all RWX permissions. 
 
 # Compilations
 
