@@ -106,3 +106,30 @@ MAX_JOBS=4 python setup.py install --user
 ```
 
 Please note that, it is highly recommend that use ```MAX_JOBS``` which reduce the memory usage and most likely your compilation will not crashes. Also, you need to indicate python that you want to install for current user ```--user```.
+# Query stackoverflow
+```
+select p.id,
+p.PostTypeId,
+p.AcceptedAnswerId,
+p.ParentId, 
+p.CreationDate,
+p.LastEditDate,
+p.Score,
+p.ViewCount,
+p.Title,
+p.Body,
+p.tags,
+p2.CreationDate,
+p2.LastEditDate,
+p2.Score,
+p2.Body
+from Posts p
+join Posts p2 
+on p.PostTypeId=1 
+and p2.PostTypeId=2
+and p.AcceptedAnswerId=p2.id
+where p.tags LIKE '%python%' and p.AcceptedAnswerId !='' 
+and p.ViewCount < XXXX
+and p.Score >=0
+order by p.ViewCount DESC;
+```
