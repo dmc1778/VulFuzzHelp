@@ -1,5 +1,5 @@
-# KhorzooKhan
-List of useful notes for developers
+# VulFuzz
+Fuzzing Deep Learning Libraries using Vulnerability Knowledge from Open Source
 
 # Package management tips
 ## pip 
