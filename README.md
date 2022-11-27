@@ -3,6 +3,21 @@ Fuzzing Deep Learning Libraries using Vulnerability Knowledge from Open Source
 
 # How instrumentation in FreeFuzz works?
 
+## Issue in instrumentating tensorflow APIs called in unit tests
+
+I found the issues. The issue is that tensorflow APIs called via tensorflow unit tests have different API names compared to APIs listed in the official documentation. For example when you run:
+
+```
+python broadcast_to_ops_test.py
+```
+
+Your code hijacks the class name inside this test file which is BroadcastToTest and records main as the parent module due to this piece of code:
+
+```
+if __name__ == "__main__":
+  test_lib.main()
+```
+
 ## When calling function APIs
 
 When we import tensorflow by writing ````import tensorflow as tf``` or ```import tensorflow```, inside a script or through command line, all high-level
