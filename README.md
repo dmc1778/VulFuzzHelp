@@ -1,6 +1,31 @@
 # VulFuzz
 Fuzzing Deep Learning Libraries using Vulnerability Knowledge from Open Source
 
+# How instrumentation in FreeFuzz works?
+
+## When calling function APIs
+
+When we import tensorflow by writing ````import tensorflow as tf``` or ```import tensorflow```, inside a script or through command line, all high-level
+modules as well as functions in each module are set inside tensorflow object. 
+
+When calling an API, e.g. class or function, the API information is set into the object, for example by calling:
+
+```
+import tensorflow as tf
+print(tf.math.floor(1.5))
+```
+We set an instatiation of ```floor``` function from ```math``` object into root tensorflow object.
+
+Once we have all attributes and functions inside tensorflow object, we can get or set them. For example, we can get ```floor``` from ```math``` module by running:
+
+```
+import tensorflow as tf
+s=tf.math.floor(5.5)
+moduleobj = getattr(tf, 'math')
+function_obj = getattr(moduleobj, 'floor')
+```
+You can get all information you need for further processing. 
+
 # Package management tips
 ## pip 
 
