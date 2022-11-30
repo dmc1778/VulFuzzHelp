@@ -122,7 +122,17 @@ Then you have to change directory to pytorch repository:
 ```
 Cd pytorch_dir
 ```
+Now checkout to the version of pytorch you want to use. We are using ```v1.7.0```:
+```
+git checkout v1.7.0
+```
 
+Now, you have to run the following commands to clone third-party libraries:
+
+```
+git submodule sync
+git submodule update --init --recursive --jobs 0
+```
 
 ### Create build files
 
@@ -134,7 +144,7 @@ python setup.py build --cmake-only
 Then start configure the build files:
 
 ```
-ccmake build 
+cmake-gui build
 ```
 
 ### Installation
