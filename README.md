@@ -122,7 +122,9 @@ Then you have to change directory to pytorch repository:
 ```
 Cd pytorch_dir
 ```
+
 Now checkout to the version of pytorch you want to use. We are using ```v1.7.0```:
+
 ```
 git checkout v1.7.0
 ```
@@ -146,6 +148,7 @@ Then start configure the build files:
 ```
 cmake-gui build
 ```
+Please note that you have to configure and generate the configurations. 
 
 ### Installation
 
