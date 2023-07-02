@@ -157,8 +157,12 @@ Finally, you can install pytorch using the following command:
 ```
 MAX_JOBS=4 python setup.py install --user
 ```
-
 Please note that, it is highly recommend that use ```MAX_JOBS``` which reduce the memory usage and most likely your compilation will not crashes. Also, you need to indicate python that you want to install for current user ```--user```.
+Then run the following command to make the executables:
+```
+python setup.py develop
+```
+
 # Query stackoverflow
 ```
 select p.id,
