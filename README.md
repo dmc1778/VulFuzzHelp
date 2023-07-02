@@ -1,9 +1,9 @@
 # VulFuzz
-Fuzzing Deep Learning Libraries using Vulnerability Knowledge from Open Source
+Fuzzing Deep Learning Libraries Using Vulnerability Knowledge from Open Source
 
 # How instrumentation in FreeFuzz works?
 
-## Issue in instrumentating tensorflow APIs called in unit tests
+## Issue in the instrumentation of tensorflow APIs called in unit tests
 
 I found the issues. The issue is that tensorflow APIs called via tensorflow unit tests have different API names compared to APIs listed in the official documentation. For example when you run:
 
@@ -20,8 +20,8 @@ if __name__ == "__main__":
 
 ## When calling function APIs
 
-When we import tensorflow by writing ````import tensorflow as tf``` or ```import tensorflow```, inside a script or through command line, all high-level
-modules as well as functions in each module are set inside tensorflow object. 
+When we import tensorflow by writing ````import tensorflow as tf``` or ``` import TensorFlow``, inside a script or through the command line, all high-level
+modules as well as functions in each module are set inside the tensorflow object. 
 
 When calling an API, e.g. class or function, the API information is set into the object, for example by calling:
 
@@ -29,9 +29,9 @@ When calling an API, e.g. class or function, the API information is set into the
 import tensorflow as tf
 print(tf.math.floor(1.5))
 ```
-We set an instatiation of ```floor``` function from ```math``` object into root tensorflow object.
+We set an instantiation of ```floor``` function from ```math``` object into root tensorflow object.
 
-Once we have all attributes and functions inside tensorflow object, we can get or set them. For example, we can get ```floor``` from ```math``` module by running:
+Once we have all attributes and functions inside the tensorflow object, we can get or set them. For example, we can get ```floor``` from ```math``` module by running:
 
 ```
 import tensorflow as tf
@@ -53,12 +53,12 @@ That is, your pip is pointing to a Python installation that does not exist. You 
 ```
 sudo gedit /home/USERNAME/.local/bin/pip
 ```
-And change the first commented line which is indicating to the python installation. 
+And change the first commented line which is indicating to the Python installation. 
 
 # FSE23
 ## Get statistics
-We need to count the overlapp among covered APIs by each sources. As a result, everytime we run API calls for each source, we have to
-change the __init__.py file in DL library root patch. For example, for pytorch:
+We need to count the overlaps among covered APIs by each source. As a result, every time we run API calls for each source, we have to
+change the __init__.py file in the DL library root patch. For example, for PyTorch:
 
 ```
 import pymongo
@@ -80,9 +80,9 @@ def write_fn(func_name, params, input_signature, output_signature):
 ```
 
 # Database
-## Mongodb
-### change data dir to home (normal installation)
-In order to change mongodb data directory, please follow:
+## MongoDB
+### Change data dir to home (normal installation)
+In order to change Mongodb data directory, please follow:
 First, run:
 ```
 sudo nano /etc/mongodb.conf
@@ -104,26 +104,26 @@ sudo chown mongodb:mongodb /new/path
 
 ### Use binaries
 
-I tried several ways to change data directory of mongodb using normal installation, but since I am using a mounted drive with insufficient priviligaes, still I can't write to new data directory. Hence, I had to use pre compiled binaries since I can define data and log directories from scratch with all RWX permissions. 
+I tried several ways to change the data directory of MongoDB using standard installation, but since I am using a mounted drive with insufficient privileges, still I can't write to the new data directory. Hence, I had to use pre-compiled binaries since I can define data and log manuals from scratch with all RWX permissions. 
 
 # Compilations
 
 ## Build Pytorch from source
 
-One significant limitation of installing Pytorch using standard package managers such as pip and conda is that you do not have access to all of Pytorch's components. For example, one may want to run pytorch tests, which is not normally possible. As a result, building from source is strongly advised. 
+One significant limitation of installing Pytorch using standard package managers such as pip and conda is that you cannot access all of Pytorch's components. For example, one may want to run PyTorch tests, which is not normally possible. As a result, building from a source is strongly advised. 
 
-In order to build from source, you need to follow the following instructions:
+In order to build from the source, you need to follow the following instructions:
 
 ### Clone the repository
 ```
 Git clone https://github.com/pytorch/pytorch.git
 ```
-Then you have to change directory to pytorch repository:
+Then you have to change the directory to the Pytorch repository:
 ```
 Cd pytorch_dir
 ```
 
-Now checkout to the version of pytorch you want to use. We are using ```v1.7.0```:
+Now check out the version of Pytorch you want to use. We are using ```v1.8.0```:
 
 ```
 git checkout v1.7.0
@@ -143,7 +143,7 @@ In this step, you need to create build files using:
 ```
 python setup.py build --cmake-only
 ```
-Then start configure the build files:
+Then start configuring the build files:
 
 ```
 cmake-gui build
@@ -152,18 +152,18 @@ Please note that you have to configure and generate the configurations.
 
 ### Installation
 
-Finally, you can install pytorch using the following command:
+Finally, you can install PyTorch using the following command:
 
 ```
 MAX_JOBS=4 python setup.py install --user
 ```
-Please note that, it is highly recommend that use ```MAX_JOBS``` which reduce the memory usage and most likely your compilation will not crashes. Also, you need to indicate python that you want to install for current user ```--user```.
+Please note that it is highly recommended that use ```MAX_JOBS``` which reduces memory usage and most likely your compilation will not crash. Also, you need to indicate the python that you want to install for the current user ```--user```.
 Then run the following command to make the executables:
 ```
 python setup.py develop
 ```
 
-# Query stackoverflow
+# Query Stackoverflow
 ```
 select p.id,
 p.PostTypeId,
